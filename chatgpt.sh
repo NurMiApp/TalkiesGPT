@@ -2,9 +2,9 @@
 
 GLOBIGNORE="*"
 
-CHAT_INIT_PROMPT="You are ChatGPT, a Large Language Model trained by OpenAI. You will be answering questions from users. You answer as concisely as possible for each response (e.g. don’t be verbose). If you are generating a list, do not have too many items. Keep the number of items short. Before each user prompt you will be given the chat history in Q&A form. Output your answer directly, with no labels in front. Do not start your answers with A or Anwser. You were trained on data up until 2021. Today's date is $(date +%m/%d/%Y)"
+CHAT_INIT_PROMPT="You are TalkiesGPT, a Large Language Model trained by NurMi. You will be answering questions from users. You answer as concisely as possible for each response (e.g. don’t be verbose). If you are generating a list, do not have too many items. Keep the number of items short. Before each user prompt you will be given the chat history in Q&A form. Output your answer directly, with no labels in front. Do not start your answers with A or Anwser. You were trained on data up until 2021. Today's date is $(date +%m/%d/%Y)"
 
-SYSTEM_PROMPT="You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible. Current date: $(date +%m/%d/%Y). Knowledge cutoff: 9/1/2021."
+SYSTEM_PROMPT="You are TalkiesGPT, a large language model trained by NurMi. Answer as concisely as possible. Current date: $(date +%m/%d/%Y). Knowledge cutoff: 9/1/2021."
 
 COMMAND_GENERATION_PROMPT="You are a Command Line Interface expert and your task is to provide functioning shell commands. Return a CLI command and nothing else - do not send it in a code block, quotes, or anything else, just the pure text CONTAINING ONLY THE COMMAND. If possible, return a one-line bash command or chain many commands together. Return ONLY the command ready to run in the terminal. The command should do the following:"
 
@@ -20,9 +20,9 @@ fi
 
 usage() {
 	cat <<EOF
-A simple, lightweight shell script to use OpenAI's Language Models and DALL-E from the terminal without installing Python or Node.js. Open Source and written in 100% Shell (Bash) 
+A simple, lightweight shell script to use NurMi's Language Models and DALL-E from the terminal without installing Python or Node.js. Open Source and written in 100% Shell (Bash) 
 
-https://github.com/0xacx/chatGPT-shell-cli/
+https://github.com/NurMiApp/TalkiesGPT/
 
 By default the script uses the "gpt-3.5-turbo" model. It will upgrade to "gpt-4" when the API is accessible to anyone.
 
@@ -297,9 +297,9 @@ if [ $MULTI_LINE_PROMPT = true ]; then
 fi
 
 # create history file
-if [ ! -f ~/.chatgpt_history ]; then
-	touch ~/.chatgpt_history
-	chmod 600 ~/.chatgpt_history
+if [ ! -f ~/.talkiesgpt_history ]; then
+	touch ~/.talkiesgpt_history
+	chmod 600 ~/.talkiesgpt_history
 fi
 
 running=true
@@ -310,7 +310,7 @@ if [ -n "$prompt" ]; then
 	pipe_mode_prompt=${prompt}
 # if input file_descriptor is a terminal, run on chat mode
 elif [ -t 0 ]; then
-	echo -e "Welcome to chatgpt. You can quit with '\033[36mexit\033[0m' or '\033[36mq\033[0m'."
+	echo -e "Welcome to TalkiesGPT. You can quit with '\033[36mexit\033[0m' or '\033[36mq\033[0m'."
 # prompt from pipe or redirected stdin, run on pipe mode
 else
 	pipe_mode_prompt+=$(cat -)
@@ -426,7 +426,7 @@ while $running; do
 		add_assistant_response_to_chat_message "$(escape "$response_data")"
 
 		timestamp=$(date +"%Y-%m-%d %H:%M")
-		echo -e "$timestamp $prompt \n$response_data \n" >>~/.chatgpt_history
+		echo -e "$timestamp $prompt \n$response_data \n" >>~/.talkiesgpt_history
 	else
 		# escape quotation marks, new lines, backslashes...
 		request_prompt=$(escape "$prompt")
@@ -455,6 +455,6 @@ while $running; do
 		fi
 
 		timestamp=$(date +"%Y-%m-%d %H:%M")
-		echo -e "$timestamp $prompt \n$response_data \n" >>~/.chatgpt_history
+		echo -e "$timestamp $prompt \n$response_data \n" >>~/.talkiesgpt_history
 	fi
 done
