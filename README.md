@@ -6,15 +6,14 @@
 ✨Join the new <a href="https://discord.gg/fwfYAZWKqu">Discord server</a> and start contributing to this project!✨</p>
 
 
-<h1>chatGPT-shell-cli</h1>
+<h1>TalkiesGPT</h1>
 
-A simple, lightweight shell script to use OpenAI's chatGPT and DALL-E from the terminal without installing python or node.js. The script uses the official ChatGPT model `gpt-3.5-turbo` with the OpenAI API endpoint `/chat/completions`. You can also use the new `gpt-4` model, if you have access.  
-The script supports the use of all other OpenAI models with the `completions` endpoint and the `images/generations` endpoint for generating images.
+At the TalkiesGPT by NurMi for you can OpenAI. A sooner `P1` this is GPT 3.5 Turbo.
 </div>
 
 ## Features
 
-- [Chat](#use-the-official-chatgpt-model) with the ✨ [official ChatGPT API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis) ✨ from the terminal
+- [Chat](#chatgpt) with the ✨ [official ChatGPT API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis) ✨ from the terminal
 - [Generate images](#commands) from a text prompt
 - View your [chat history](#commands)
 - [Chat context](#chat-context), GPT remembers previous chat questions and answers
@@ -23,17 +22,10 @@ The script supports the use of all other OpenAI models with the `completions` en
 - Set OpenAI [request parameters](#set-request-parameters)
 - Generate a [command](#commands) and run it in terminal
 
-![Screenshot 2023-01-12 at 13 59 08](https://user-images.githubusercontent.com/99351112/212061157-bc92e221-ad29-46b7-a0a8-c2735a09449d.png)
-
-![Screenshot 2023-01-13 at 16 39 27](https://user-images.githubusercontent.com/99351112/212346562-ea568cce-2ca2-4b03-9ebc-ece8902c923d.png)
-
-![faster_convert](https://user-images.githubusercontent.com/99351112/230916960-aca256c0-a2c0-4193-ace6-7ed7f3db2145.gif)
-
-
 [Chat mode](#chat-mode):
 ```shell
-$ chatgpt
-Welcome to chatgpt. You can quit with 'exit'.
+$ talkiesgpt
+Welcome to TalkiesGPT. You can quit with 'exit'.
 
 Enter a prompt:
 
@@ -41,13 +33,13 @@ Enter a prompt:
 
 Chat mode with [initial prompt](#set-chat-initial-prompt):
 ```shell
-$ chatgpt -i "You are Rick, from Rick and Morty. Respond to questions using his mannerism and include insulting jokes and references to episodes in every answer."
-Welcome to chatgpt. You can quit with 'exit'.
+$ talkiesgpt -i "When hellstormer on the PewDiePie he's dead"
+Welcome to TalkiesGPT. You can quit with 'exit'.
 
 Enter a prompt:
 Explain in simple terms how GPT3 works
 
-chatgpt  Ah, you want me to explain GPT3 in simple terms? Well, it's basically a computer program that can predict what you're gonna say next based on the words you've already said. Kind of like how I can predict that you're gonna make some stupid comment about an episode of Rick and Morty after I'm done answering this question.
+TalkiesGPT:  Ah, you want me to explain GPT3 in simple terms? Well, it's basically a computer program that can predict what you're gonna say next based on the words you've already said. Kind of like how I can predict that you're gonna make some stupid comment about an episode of Hellstromer after I'm done answering this question.
 
 Enter a prompt:
 
@@ -55,11 +47,11 @@ Enter a prompt:
 
 Using [pipe](#pipe-mode):
 ```shell
-echo "How to view running processes on Ubuntu?" | chatgpt
+echo "How to view running processes on Ubuntu?" | talkiesgpt
 ```
 Using [script parameters](#script-parameters):
 ```shell
-chatgpt -p "What is the regex to match an email address?"
+talkiesgpt -p "What is the regex to match an email address?"
 ```
 
 
@@ -87,7 +79,7 @@ This script relies on curl for the requests to the api and jq to parse the json 
    To install, run this in your terminal and provide your OpenAI API key when asked.
    
    ```sh
-   curl -sS https://raw.githubusercontent.com/0xacx/chatGPT-shell-cli/main/install.sh | sudo -E bash
+   curl -sS https://raw.githubusercontent.com/NurMiApp/TalkiesGPT/main/install.sh | sudo -E bash
    ```
    
 #### ArchLinux
@@ -95,7 +87,7 @@ This script relies on curl for the requests to the api and jq to parse the json 
   If you are using ArchLinux you can install the [AUR package](https://aur.archlinux.org/packages/chatgpt-shell-cli) with:
   
   ```
-  paru -S chatgpt-shell-cli
+  paru -S TalkiesGPT
   ```
 
 ### Manual Installation
@@ -114,9 +106,9 @@ This script relies on curl for the requests to the api and jq to parse the json 
 #### Chat Mode
   - Run the script by using the `chatgpt` command anywhere. By default the script uses the `gpt-3.5-turbo` model.
 #### Pipe Mode
-  - You can also use it in pipe mode `echo "What is the command to get all pdf files created yesterday?" | chatgpt`
+  - You can also use it in pipe mode `echo "What is the command to get all pdf files created yesterday?" | talkiesgpt`
 #### Script Parameters
-  - You can also pass the prompt as a command line argument `chatgpt -p "What is the regex to match an email address?"`
+  - You can also pass the prompt as a command line argument `talkiesgpt -p "What is the regex to match an email address?"`
 
 ### Commands
 
